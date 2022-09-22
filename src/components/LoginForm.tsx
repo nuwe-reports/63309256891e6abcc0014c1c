@@ -10,7 +10,6 @@ import {
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { Formik, Field } from "formik";
-import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
 
 interface loginState {
@@ -21,15 +20,14 @@ interface loginState {
 
 const LoginForm = () => {
   const { toggleColorMode } = useColorMode();
-  const { logInUser } = useContext(AuthContext) as loginState;
 
   const formBackground = useColorModeValue("gray.100", "gray.700");
   const navigate = useNavigate();
-  const loginHandler = ( username:string) => {
-    logInUser(username)
-    navigate("/characters");
-  };
 
+  const loginHandler = (username: string) => {
+    localStorage.setItem("username", username);
+    navigate("/characters/1");
+  };
 
   return (
     <Formik
