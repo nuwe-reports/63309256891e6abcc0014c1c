@@ -4,6 +4,8 @@ import './App.css'
 import { Routes, Route } from "react-router-dom";
 import LoginPage from './pages/LoginPage';
 import CharactersPage from './pages/CharactersPaje';
+import PrivateRoute from './components/routes/PrivateRoute'; 
+
 function App() {
   const [count, setCount] = useState(0)
 
@@ -11,9 +13,7 @@ function App() {
     <div className="App">
     <Routes>
       <Route  path="/" element={<LoginPage/>} />
-      <Route  path="/characters" element={<CharactersPage/>} />
-
-
+      <Route  path="/characters" element={<PrivateRoute><CharactersPage/></PrivateRoute>} />
     </Routes>
     </div>
   )
