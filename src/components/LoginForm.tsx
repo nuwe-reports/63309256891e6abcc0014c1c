@@ -22,52 +22,75 @@ const LoginForm = () => {
   const mortyRef = useRef(null);
 
   const formBackground = useColorModeValue("gray.100", "gray.700");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const loginHandler = (e: React.MouseEvent<HTMLElement>) => {
-    e.preventDefault()
-    navigate("/characters")
-}
+    e.preventDefault();
+    navigate("/characters");
+  };
   useEffect(() => {
     const rickTimeLine = gsap.timeline();
     const mortyTimeLine = gsap.timeline();
 
+    rickTimeLine
+      .fromTo(
+        rickPortalRef.current,
+        { transform: "Scale(0)", opacity: 0 },
+        { transform: "Scale(1)", opacity: 1, duration: 3, ease: "back" }
+      )
+      .fromTo(
+        rickRef.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 1 },
+        "-=0.8"
+      )
+      .to(rickPortalRef.current, {
+        transform: "Scale(0)",
+        opacity: 1,
+        duration: 2,
+      });
 
-
-    rickTimeLine.fromTo(rickPortalRef.current, {transform:"Scale(0)", opacity:0}, {transform:"Scale(1)", opacity:1, duration:3, ease:"back"})
-    .fromTo(rickRef.current, { opacity:0}, {opacity:1, duration:1}, "-=0.8")
-    .to(rickPortalRef.current,{transform:"Scale(0)", opacity:1, duration:2})
-
-    mortyTimeLine.fromTo(mortyPortalRef.current, {transform:"Scale(0)", opacity:0}, {transform:"Scale(1)", opacity:1, duration:3, ease:"back"})
-    .fromTo(mortyRef.current, { opacity:0}, {opacity:1, duration:1}, "-=0.8")
-    .to(mortyPortalRef.current,{transform:"Scale(0)", opacity:1, duration:2})
-
+    mortyTimeLine
+      .fromTo(
+        mortyPortalRef.current,
+        { transform: "Scale(0)", opacity: 0 },
+        { transform: "Scale(1)", opacity: 1, duration: 3, ease: "back" }
+      )
+      .fromTo(
+        mortyRef.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 1 },
+        "-=0.8"
+      )
+      .to(mortyPortalRef.current, {
+        transform: "Scale(0)",
+        opacity: 1,
+        duration: 2,
+      });
   }, []);
   return (
     <Flex
       height="100vh"
       w="100vw"
-      bg="#020701"
+      bg="customGreen.200"
       alignItems="center"
       justifyContent="center"
     >
       <Flex
         flexDirection="column"
         // bg={formBackground}
-        p={{base:6, md:12}}
+        p={{ base: 6, md: 12 }}
         borderRadius={8}
         border="2px"
-        borderColor="#c1e26a"
+        borderColor= "customGreen.50"
         boxShadow="lg"
         position="relative"
-        bg="#0b2005"
+        bg="customGreen.100"
       >
-
         <Image
           src="./Rick-and-Morty.png"
           position="absolute"
           top={-24}
           right={0}
-
         />
 
         <Image
@@ -77,8 +100,7 @@ const LoginForm = () => {
           right={-300}
           css={{ transform: "rotate(180deg)" }}
           ref={rickPortalRef}
-          visibility={{base:"hidden", md:"visible"}}
-
+          visibility={{ base: "hidden", md: "visible" }}
         />
         <Image
           src="./rick.png"
@@ -88,9 +110,7 @@ const LoginForm = () => {
           height={300}
           width="auto"
           ref={rickRef}
-          visibility={{base:"hidden", md:"visible"}}
-
-
+          visibility={{ base: "hidden", md: "visible" }}
         />
         <Image
           src="./portal-2.gif"
@@ -98,9 +118,7 @@ const LoginForm = () => {
           bottom={0}
           left={-300}
           ref={mortyPortalRef}
-          visibility={{base:"hidden", md:"visible"}}
-
-
+          visibility={{ base: "hidden", md: "visible" }}
         />
         <Image
           src="./morty.png"
@@ -110,26 +128,25 @@ const LoginForm = () => {
           height={220}
           width="auto"
           ref={mortyRef}
-          visibility={{base:"hidden", md:"visible"}}
+          visibility={{ base: "hidden", md: "visible" }}
         />
 
-
-        <Heading mb={6} color="#c1e26a">
+        <Heading mb={6} color="customGreen.50">
           Log In
         </Heading>
-        <Input
-          placeholder="Rick"
-          type="email"
-          variant="filled"
-          mb={3}
-        />
+        <Input placeholder="Rick" type="email" variant="filled" mb={3} color="customGreen.50"/>
         {/* <Input
           placeholder="**********"
           type="password"
           variant="filled"
           mb={6}
         /> */}
-        <Button bg="#00b5cc" color="#020701" mb={8} onClick={(e: React.MouseEvent<HTMLElement>) => loginHandler(e)}>
+        <Button
+          bg="customBlue.50"
+          color="customGreen.200"
+          mb={8}
+          onClick={(e: React.MouseEvent<HTMLElement>) => loginHandler(e)}
+        >
           Log In
         </Button>
         {/* <FormControl display="flex" alignItems="center">
