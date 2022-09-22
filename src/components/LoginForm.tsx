@@ -10,23 +10,31 @@ import {
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { Formik, Field } from "formik";
+import { AuthContext } from "../context/auth.context";
+import { useContext } from "react";
+
+interface loginState {
+  isLoggedIn: boolean;
+  logInUser: (username: string) => void;
+  logOutUser: (username: string) => void;
+}
 
 const LoginForm = () => {
   const { toggleColorMode } = useColorMode();
+  const { logInUser } = useContext(AuthContext) as loginState;
 
   const formBackground = useColorModeValue("gray.100", "gray.700");
   const navigate = useNavigate();
-  const loginHandler = (e: React.MouseEvent<HTMLElement>) => {
-    e.preventDefault();
+  const loginHandler = ( username:string) => {
+    logInUser(username)
     navigate("/characters");
   };
+
 
   return (
     <Formik
       initialValues={{ username: "" }}
-      onSubmit={(values) => {
-        console.log(values);
-      }}
+      onSubmit={(values) => loginHandler(values.username)}
     >
       {({ handleSubmit, errors, touched }) => (
         <form onSubmit={handleSubmit}>
