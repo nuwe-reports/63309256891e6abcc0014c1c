@@ -1,16 +1,12 @@
 import {
-  Flex,
   Heading,
   Input,
   Button,
   FormControl,
-  FormLabel,
-  Switch,
   useColorMode,
   useColorModeValue,
-  Image,
   VStack,
-  FormErrorMessage
+  FormErrorMessage,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { Formik, Field } from "formik";
@@ -63,10 +59,12 @@ const LoginForm = () => {
                   }
                 }}
               />
-              <FormErrorMessage position="absolute" bottom={-2} >{errors.username}</FormErrorMessage>
+              <FormErrorMessage position="absolute" bottom={-2}>
+                {errors.username}
+              </FormErrorMessage>
             </FormControl>
             <Button
-            type="submit"
+              type="submit"
               bg="customBlue.50"
               color="customGreen.200"
               mb={8}
