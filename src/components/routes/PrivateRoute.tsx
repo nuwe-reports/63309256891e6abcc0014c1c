@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { AuthContext } from "../../context/auth.context";
 import { Navigate } from "react-router-dom";
 
 interface Props {
@@ -13,9 +12,10 @@ interface loginState {
 }
 
 function PrivateRoute({ children }: Props) {
-  const { isLoggedIn } = useContext(AuthContext) as loginState;
-
-  if (!isLoggedIn) return <Navigate to="/" replace />;
+  const userLogged = localStorage.getItem("username");
+  if (!userLogged) {
+    return <Navigate to="/" replace />
+  };
 
   return children;
 }
