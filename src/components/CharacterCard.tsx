@@ -1,24 +1,18 @@
-import {
-  Box,
-  Heading,
-  Text,
-  Image,
-  VStack,
-  Wrap,
-  WrapItem,
-  useDisclosure,
-  HStack,
-} from "@chakra-ui/react";
+import { Text, Image, VStack, WrapItem, HStack } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 
 interface Props {
   character: any;
-  favorites:number[]
-  handleCardCLick: (id:number) => void;
+  favorites: number[];
+  handleCardCLick: (id: number) => void;
   handleFavoriteClick: (e: React.MouseEvent<SVGElement>, id: number) => void;
-
 }
-const CharacterCard = ({ character, favorites, handleCardCLick, handleFavoriteClick }: Props) => {
+const CharacterCard = ({
+  character,
+  favorites,
+  handleCardCLick,
+  handleFavoriteClick,
+}: Props) => {
   return (
     <WrapItem
       border="2px"
