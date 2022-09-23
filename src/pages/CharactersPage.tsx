@@ -4,7 +4,7 @@ import {
   Wrap,
   useDisclosure,
 } from "@chakra-ui/react";
-import PageButtons from "../components/Pagination";
+import PageButtons from "../components/PageButtons";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -12,14 +12,14 @@ import Fonts from "../Fonts";
 import { useParams } from "react-router-dom";
 import CharacterModal from "../components/CharacterModal";
 import CharacterCard from "../components/CharacterCard";
+import useFetchCharacters from "../hooks/useFetchCharacters";
 const CharactersPage = () => {
-  const [characters, setCharacters] = useState<any[]>([]);
-  const [totalPages, setTotalPages] = useState<number>(0);
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [favorites, setFavorites] = useState<number[]>([]);
   const [id, setId] = useState<number | null>(null);
   const { page } = useParams();
-
+  const {characters, totalPages} = useFetchCharacters(page)
   const handleCardCLick = (id: number) => {
     setId(id);
     onOpen();
@@ -35,20 +35,6 @@ const CharactersPage = () => {
     }
   };
 
-  useEffect(() => {
-    async function fetchCharacters() {
-      const response = await axios(
-        `https://rickandmortyapi.com/api/character?page=${page}`
-      );
-      setCharacters(response.data.results);
-      console.log(
-        "🚀 ~ file: CharactersPage.tsx ~ line 49 ~ fetchCharacters ~ response.data.results",
-        response.data.results
-      );
-      setTotalPages(response.data.info.pages);
-    }
-    fetchCharacters();
-  }, [page]);
 
   return (
     <Box
