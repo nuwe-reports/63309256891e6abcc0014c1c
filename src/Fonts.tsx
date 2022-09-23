@@ -5,8 +5,8 @@ const Fonts = () => (
     styles={`
     @font-face {
         font-family: 'Get Schwifty';
-        src: url('../public/getschwifty.woff2') format('woff2'),
-        url('../public/getschwifty.woff2') format('woff2');
+        src: url('/getschwifty.woff2') format('woff2'),
+        url('/getschwifty.woff2') format('woff2');
         font-weight: 72;
         font-style: normal;
         font-stretch: normal;
