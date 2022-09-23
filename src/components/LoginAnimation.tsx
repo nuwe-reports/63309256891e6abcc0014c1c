@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import { Flex, Image } from "@chakra-ui/react";
+import {Image } from "@chakra-ui/react";
 import useGsap from "../hooks/useLoginGsap";
 
 const LoginAnimation = () => {
