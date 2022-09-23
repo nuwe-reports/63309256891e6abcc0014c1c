@@ -1,6 +1,6 @@
 import { Text, Image, VStack, WrapItem, HStack } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
-
+import FavoriteButton from "../components/FavoriteButton"
 interface Props {
   character: any;
   favorites: number[];
@@ -33,18 +33,7 @@ const CharacterCard = ({
         />
         <HStack>
           <Text color="customGreen.50">{character.name.toUpperCase()}</Text>
-          {favorites.includes(character.id) ? (
-            <StarIcon
-              color="customBlue.50"
-              onClick={(e) => handleFavoriteClick(e, character.id)}
-            />
-          ) : (
-            <StarIcon
-              color="transparent"
-              stroke="customGreen.50"
-              onClick={(e) => handleFavoriteClick(e, character.id)}
-            />
-          )}
+          <FavoriteButton favorites={favorites} id={character.id} handleFavoriteClick={handleFavoriteClick}/>
         </HStack>
       </VStack>
     </WrapItem>

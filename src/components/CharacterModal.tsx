@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import useFetchCharacter from "../hooks/useFetchCharacter";
+import FavoriteButton from "../components/FavoriteButton";
 
 interface Props {
   isOpen: boolean;
@@ -64,18 +65,11 @@ const CharacterModal = ({
                   <Text pt={0} pl={0} fontSize="2xl" fontWeight="extrabold">
                     {character.name}
                   </Text>
-                  {favorites.includes(character.id) ? (
-                    <StarIcon
-                      color="customBlue.50"
-                      onClick={(e) => handleFavoriteClick(e, character.id)}
-                    />
-                  ) : (
-                    <StarIcon
-                      color="transparent"
-                      stroke="customGreen.50"
-                      onClick={(e) => handleFavoriteClick(e, character.id)}
-                    />
-                  )}
+                  <FavoriteButton
+                    favorites={favorites}
+                    id={character.id}
+                    handleFavoriteClick={handleFavoriteClick}
+                  />
                 </HStack>
 
                 <HStack>
