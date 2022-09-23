@@ -1,14 +1,7 @@
-import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 
 interface Props {
   children: JSX.Element;
-}
-
-interface loginState {
-  isLoggedIn: boolean;
-  logInUser: (username: string) => void;
-  logOutUser: (username: string) => void;
 }
 
 function PrivateRoute({ children }: Props) {
