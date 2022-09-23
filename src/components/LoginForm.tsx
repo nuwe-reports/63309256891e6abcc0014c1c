@@ -49,6 +49,7 @@ const LoginForm = () => {
                 color="customGreen.100"
                 bg="customGreen.50"
                 borderColor="customBlue.50"
+                placeholder="Username"
                 _focus={{
                   borderColor: "customGreen.50",
                   color: "customGreen.50",
