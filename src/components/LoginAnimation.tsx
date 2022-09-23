@@ -1,9 +1,8 @@
-import { Box } from "@chakra-ui/react";
-import {Image } from "@chakra-ui/react";
+import { Box, Image } from "@chakra-ui/react";
 import useGsap from "../hooks/useLoginGsap";
 
 const LoginAnimation = () => {
-  const {rickPortalRef, mortyPortalRef, rickRef, mortyRef} = useGsap();
+  const { rickPortalRef, mortyPortalRef, rickRef, mortyRef } = useGsap();
 
   return (
     <Box position="relative">
