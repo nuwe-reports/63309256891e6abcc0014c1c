@@ -12,15 +12,15 @@ const navigate = useNavigate();
       alignItems="center"
       justifyContent="center"
     >
-      <VStack border="2px" borderColor="customGreen.50" p={8} bg="customGreen.100" borderRadius="8px">
+      <VStack border="2px" borderColor="customGreen.50" p={8} bg="customGreen.100" borderRadius="8px" m={4}>
         <Image src="./404-Image.png" alt="404 Image" w={96} />
-        <Text fontSize="4xl" fontWeight="bold" color="red">
-          404
+        <Text fontSize={{base:"2xl", md:"4xl"}} fontWeight="bold" color="red">
+          404 - Page not found
         </Text>
-        <Text fontSize="4xl" fontWeight="bold" color="customGreen.50">
-          Look Morty! It seems someone is lost!
+        <Text fontSize={{base:"2xl", md:"4xl"}} fontWeight="bold" color="customGreen.50">
+          Look Morty! Someone seems to be lost!
         </Text>
-        <Text fontSize="xl" fontWeight="bold" color="customGreen.50">
+        <Text fontSize={{base:"md", md:"xl"}} fontWeight="bold" color="customGreen.50">
           Fast! Enter the portal to go back home!
         </Text>
         <Image
