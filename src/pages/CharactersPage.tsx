@@ -42,7 +42,7 @@ const CharactersPage = () => {
         color="customBlue.50"
         fontSize={{ base: 60, md: 120 }}
         textShadow="2.5px 0 #c1e26a, -2.5px 0 #c1e26a, 0 2.5px #c1e26a, 0 -2.5px #c1e26a"
-        py={10}
+        pt={10}
       >
         CHARACTERS
       </Heading>
