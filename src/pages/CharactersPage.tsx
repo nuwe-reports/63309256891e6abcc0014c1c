@@ -73,6 +73,7 @@ const handleCLick = (id:number) =>{
               p={4}
               onClick={() => handleCLick(character.id)}
               cursor={'pointer'}
+              _hover={{ opacity:0.8}}
             >
               <VStack key={index}>
                 <Image
