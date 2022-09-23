@@ -23,7 +23,7 @@ const PageButtons = ({ totalPages }: Props) => {
     initialState: { currentPage: 1 },
     limits: {
       outer: 1,
-      inner: 3,
+      inner: 2,
     },
   });
 
