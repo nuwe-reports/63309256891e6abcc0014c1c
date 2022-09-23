@@ -118,6 +118,8 @@ const CharactersPage = () => {
           onOpen={onOpen}
           onClose={onClose}
           id={id}
+          favorites={favorites}
+          handleFavoriteClick={handleFavoriteClick}
         />
       )}
       <PageButtons totalPages={totalPages}></PageButtons>

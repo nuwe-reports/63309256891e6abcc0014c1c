@@ -13,19 +13,29 @@ import {
   Box,
   Heading,
   Circle,
-  VStack
+  VStack,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { StarIcon } from "@chakra-ui/icons";
 
 interface Props {
   isOpen: boolean;
   onOpen: () => void;
   onClose: () => void;
   id: number | null;
+  favorites: number[];
+  handleFavoriteClick: (e: React.MouseEvent<SVGElement>, id: number) => void;
 }
 
-function CharacterModal({ isOpen, onOpen, onClose, id }: Props) {
+function CharacterModal({
+  isOpen,
+  onOpen,
+  onClose,
+  id,
+  favorites,
+  handleFavoriteClick,
+}: Props) {
   const [character, setCharacter] = useState<any>({});
   useEffect(() => {
     async function fetchCharacter() {
@@ -52,13 +62,12 @@ function CharacterModal({ isOpen, onOpen, onClose, id }: Props) {
           color="customGreen.50"
           border="2px"
           borderColor="customGreen.50"
-          mx={{base:8, md:0}}
+          mx={{ base: 8, md: 0 }}
           borderRadius="8px"
-
         >
           <ModalCloseButton _hover={{ borderColor: "customGreen.50" }} />
           <ModalBody pt={12} px={12}>
-            <HStack display={{base:"none", md:"flex"}}>
+            <HStack display={{ base: "none", md: "flex" }}>
               <Image
                 src={character.image}
                 alt={character.name + "Image"}
@@ -66,9 +75,31 @@ function CharacterModal({ isOpen, onOpen, onClose, id }: Props) {
                 borderRadius="8px"
               />
               <Box pl={4}>
-                <ModalHeader pt={0} pl={0}>
+                <HStack >
+                <Text
+                  pt={0}
+                  pl={0}
+                  fontSize="2xl"
+                  fontWeight="extrabold"
+                >
                   {character.name}
-                </ModalHeader>
+                </Text>
+                {favorites.includes(character.id) ? (
+                  <StarIcon
+                    color="customGreen.50"
+                    stroke="customGreen.50"
+                    onClick={(e) => handleFavoriteClick(e, character.id)}
+                  />
+                ) : (
+                  <StarIcon
+                    color="transparent"
+                    stroke="customGreen.50"
+                    onClick={(e) => handleFavoriteClick(e, character.id)}
+                  />
+                )}
+                </HStack>
+                
+
                 <HStack>
                   {character.status === "Alive" ? (
                     <Circle size="10px" bg="green.400" />
@@ -95,7 +126,7 @@ function CharacterModal({ isOpen, onOpen, onClose, id }: Props) {
                 </Box>
               </Box>
             </HStack>
-            <VStack display={{base:"flex", md:"none"}}>
+            <VStack display={{ base: "flex", md: "none" }}>
               <Image
                 src={character.image}
                 alt={character.name + "Image"}
@@ -103,7 +134,12 @@ function CharacterModal({ isOpen, onOpen, onClose, id }: Props) {
                 borderRadius={4}
               />
               <Box pl={4}>
-                <ModalHeader pt={0} pl={0}>
+                <ModalHeader
+                  pt={0}
+                  pl={0}
+                  fontSize="2xl"
+                  fontWeight="extrabold"
+                >
                   {character.name}
                 </ModalHeader>
                 <HStack>
