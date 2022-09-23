@@ -11,12 +11,9 @@ import {
   Text,
   HStack,
   Box,
-  Heading,
   Circle,
   VStack,
 } from "@chakra-ui/react";
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { StarIcon } from "@chakra-ui/icons";
 import useFetchCharacter from "../hooks/useFetchCharacter";
 
@@ -37,7 +34,7 @@ const CharacterModal = ({
   favorites,
   handleFavoriteClick,
 }: Props) => {
-  const {character} = useFetchCharacter(id)
+  const { character } = useFetchCharacter(id);
   return (
     <>
       <Modal onClose={onClose} isOpen={isOpen} isCentered size="xl">
