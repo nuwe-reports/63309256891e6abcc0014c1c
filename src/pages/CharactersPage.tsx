@@ -1,22 +1,17 @@
 import {
   Box,
   Heading,
-  Text,
-  Image,
-  VStack,
   Wrap,
-  WrapItem,
   useDisclosure,
-  HStack,
 } from "@chakra-ui/react";
 import PageButtons from "../components/Pagination";
-import { StarIcon } from "@chakra-ui/icons";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Fonts from "../Fonts";
 import { useParams } from "react-router-dom";
 import CharacterModal from "../components/CharacterModal";
+import CharacterCard from "../components/CharacterCard";
 const CharactersPage = () => {
   const [characters, setCharacters] = useState<any[]>([]);
   const [totalPages, setTotalPages] = useState<number>(0);
@@ -46,6 +41,10 @@ const CharactersPage = () => {
         `https://rickandmortyapi.com/api/character?page=${page}`
       );
       setCharacters(response.data.results);
+      console.log(
+        "🚀 ~ file: CharactersPage.tsx ~ line 49 ~ fetchCharacters ~ response.data.results",
+        response.data.results
+      );
       setTotalPages(response.data.info.pages);
     }
     fetchCharacters();
@@ -71,42 +70,13 @@ const CharactersPage = () => {
       <Wrap spacing={{ base: 8, lg: 20 }} pt={18} justify="center">
         {characters.map((character, index) => {
           return (
-            <WrapItem
-              border="2px"
-              borderColor="customGreen.50"
-              bg="customGreen.100"
-              p={4}
-              onClick={() => handleCardCLick(character.id)}
-              cursor={"pointer"}
-              borderRadius="8px"
-              _hover={{ opacity: 0.8 }}
-            >
-              <VStack key={index}>
-                <Image
-                  src={character.image}
-                  alt={character.name + "Image"}
-                  maxW={64}
-                  borderRadius="8px"
-                />
-                <HStack>
-                  <Text color="customGreen.50">
-                    {character.name.toUpperCase()}
-                  </Text>
-                  {favorites.includes(character.id) ? (
-                    <StarIcon
-                      color="customBlue.50"
-                      onClick={(e) => handleFavoriteClick(e, character.id)}
-                    />
-                  ) : (
-                    <StarIcon
-                      color="transparent"
-                      stroke="customGreen.50"
-                      onClick={(e) => handleFavoriteClick(e, character.id)}
-                    />
-                  )}
-                </HStack>
-              </VStack>
-            </WrapItem>
+            <CharacterCard
+              key={index}
+              character={character}
+              favorites={favorites}
+              handleCardCLick={handleCardCLick}
+              handleFavoriteClick={handleFavoriteClick}
+            />
           );
         })}
       </Wrap>
