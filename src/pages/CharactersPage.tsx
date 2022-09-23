@@ -7,8 +7,10 @@ import {
   Wrap,
   WrapItem,
   useDisclosure,
+  HStack,
 } from "@chakra-ui/react";
 import PageButtons from "../components/Pagination";
+import { StarIcon } from "@chakra-ui/icons";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -19,12 +21,23 @@ const CharactersPage = () => {
   const [characters, setCharacters] = useState<any[]>([]);
   const [totalPages, setTotalPages] = useState<number>(0);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [favorites, setFavorites] = useState<number[]>([]);
   const [id, setId] = useState<number | null>(null);
   const { page } = useParams();
 
-  const handleCLick = (id: number) => {
+  const handleCardCLick = (id: number) => {
     setId(id);
     onOpen();
+  };
+
+  const handleFavoriteClick = (e: React.MouseEvent<SVGElement>, id: number) => {
+    e.stopPropagation();
+    const index = favorites.indexOf(id);
+    if (id && index === -1) {
+      setFavorites([...favorites, id]);
+    } else if (id && index !== -1) {
+      setFavorites(favorites.filter((item) => item !== id));
+    }
   };
 
   useEffect(() => {
@@ -55,7 +68,6 @@ const CharactersPage = () => {
         CHARACTERS
       </Heading>
       <PageButtons totalPages={totalPages}></PageButtons>
-
       <Wrap spacing={{ base: 8, lg: 20 }} pt={18} justify="center">
         {characters.map((character, index) => {
           return (
@@ -64,7 +76,7 @@ const CharactersPage = () => {
               borderColor="customGreen.50"
               bg="customGreen.100"
               p={4}
-              onClick={() => handleCLick(character.id)}
+              onClick={() => handleCardCLick(character.id)}
               cursor={"pointer"}
               borderRadius="8px"
               _hover={{ opacity: 0.8 }}
@@ -76,14 +88,30 @@ const CharactersPage = () => {
                   maxW={64}
                   borderRadius="8px"
                 />
-                <Text color="customGreen.50">
-                  {character.name.toUpperCase()}
-                </Text>
+                <HStack>
+                  <Text color="customGreen.50">
+                    {character.name.toUpperCase()}
+                  </Text>
+                  {favorites.includes(character.id) ? (
+                    <StarIcon
+                      color="customGreen.50"
+                      stroke="customGreen.50"
+                      onClick={(e) => handleFavoriteClick(e, character.id)}
+                    />
+                  ) : (
+                    <StarIcon
+                      color="transparent"
+                      stroke="customGreen.50"
+                      onClick={(e) => handleFavoriteClick(e, character.id)}
+                    />
+                  )}
+                </HStack>
               </VStack>
             </WrapItem>
           );
         })}
       </Wrap>
+      S
       {isOpen && (
         <CharacterModal
           isOpen={isOpen}
