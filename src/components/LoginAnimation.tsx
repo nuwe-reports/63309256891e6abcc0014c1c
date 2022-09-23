@@ -14,7 +14,7 @@ const LoginAnimation = () => {
       />
 
       <Image
-        src="./portal-2.gif"
+        src="/portal-2.gif"
         position="absolute"
         bottom={0}
         right={-300}
@@ -23,7 +23,7 @@ const LoginAnimation = () => {
         visibility={{ base: "hidden", md: "visible" }}
       />
       <Image
-        src="./rick.png"
+        src="/rick.png"
         position="absolute"
         bottom={0}
         right={-130}
@@ -33,7 +33,7 @@ const LoginAnimation = () => {
         visibility={{ base: "hidden", md: "visible" }}
       />
       <Image
-        src="./portal-2.gif"
+        src="/portal-2.gif"
         position="absolute"
         bottom={0}
         left={-300}
@@ -41,7 +41,7 @@ const LoginAnimation = () => {
         visibility={{ base: "hidden", md: "visible" }}
       />
       <Image
-        src="./morty.png"
+        src="/morty.png"
         position="absolute"
         bottom={0}
         left={-200}
