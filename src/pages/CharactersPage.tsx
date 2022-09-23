@@ -1,4 +1,4 @@
-import { Box, Heading, Wrap, useDisclosure } from "@chakra-ui/react";
+import { Box, Image, Wrap, useDisclosure } from "@chakra-ui/react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Fonts from "../Fonts";
@@ -6,7 +6,6 @@ import CharacterModal from "../components/CharacterModal";
 import CharacterCard from "../components/CharacterCard";
 import PageButtons from "../components/PageButtons";
 import useFetchAllCharacters from "../hooks/useFetchAllCharacters";
-
 
 const CharactersPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -38,15 +37,8 @@ const CharactersPage = () => {
       px={{ base: 8, xl: 160 }}
     >
       <Fonts />
-      <Heading
-        color="customBlue.50"
-        fontSize={{ base: 60, md: 120 }}
-        textShadow="2.5px 0 #c1e26a, -2.5px 0 #c1e26a, 0 2.5px #c1e26a, 0 -2.5px #c1e26a"
-        pt={10}
-      >
-        CHARACTERS
-      </Heading>
-      <PageButtons totalPages={totalPages}></PageButtons>
+      <Image src="/characters.png" alt="Characters" w={{base:64, md:96}} m="auto" pt={10} filter= 'drop-shadow(2px 0 0 #c1e26a) drop-shadow(0 2px 0 #c1e26a) drop-shadow(-2px 0 0 #c1e26a) drop-shadow(0 -2px 0 #c1e26a)  '/>
+      <PageButtons totalPages={totalPages}/>
       <Wrap spacing={{ base: 8, lg: 20 }} pt={18} justify="center">
         {characters.map((character, index) => {
           return (
@@ -70,7 +62,7 @@ const CharactersPage = () => {
           handleFavoriteClick={handleFavoriteClick}
         />
       )}
-      <PageButtons totalPages={totalPages}></PageButtons>
+      <PageButtons totalPages={totalPages}/>
     </Box>
   );
 };
