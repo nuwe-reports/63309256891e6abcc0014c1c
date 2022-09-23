@@ -66,6 +66,7 @@ const CharactersPage = () => {
               p={4}
               onClick={() => handleCLick(character.id)}
               cursor={"pointer"}
+              borderRadius="8px"
               _hover={{ opacity: 0.8 }}
             >
               <VStack key={index}>
@@ -73,6 +74,7 @@ const CharactersPage = () => {
                   src={character.image}
                   alt={character.name + "Image"}
                   maxW={64}
+                  borderRadius="8px"
                 />
                 <Text color="customGreen.50">
                   {character.name.toUpperCase()}
@@ -91,9 +93,7 @@ const CharactersPage = () => {
         />
       )}
       <PageButtons totalPages={totalPages}></PageButtons>
-
     </Box>
-
   );
 };
 
