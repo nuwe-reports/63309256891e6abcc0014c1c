@@ -37,7 +37,7 @@ const CharactersPage = () => {
       px={{ base: 8, xl: 160 }}
     >
       <Fonts />
-      <Image src="/characters.png" alt="Characters" w={{base:64, md:96}} m="auto" pt={10} filter= 'drop-shadow(2px 0 0 #c1e26a) drop-shadow(0 2px 0 #c1e26a) drop-shadow(-2px 0 0 #c1e26a) drop-shadow(0 -2px 0 #c1e26a)  '/>
+      <Image src="/characters.png" alt="Characters" w={{base:"sm", md:"md"}} m="auto" pt={10} filter= 'drop-shadow(2px 0 0 #c1e26a) drop-shadow(0 2px 0 #c1e26a) drop-shadow(-2px 0 0 #c1e26a) drop-shadow(0 2px 0 #c1e26a)  '/>
       <PageButtons totalPages={totalPages}/>
       <Wrap spacing={{ base: 8, lg: 20 }} pt={18} justify="center">
         {characters.map((character, index) => {
