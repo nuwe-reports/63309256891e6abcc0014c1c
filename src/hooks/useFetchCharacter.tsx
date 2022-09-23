@@ -22,7 +22,26 @@ interface  Character {
   url:string;
 }
 const useFetchCharacter = (id?: number) => {
-  const [character, setCharacter] = useState<Character| {}>({});
+  const [character, setCharacter] = useState<Character>({
+    created:"",
+    episode: [""],
+    gender: "",
+    id:0,
+    image: "",
+    location: {
+      name:"",
+      url:"",
+    },
+    name:"",
+    origin: {
+      name:"",
+      url:"",
+    },
+    species:"",
+    status:"",
+    type:"",
+    url:"",
+  });
 
   useEffect(() => {
     async function fetchCharacter() {
