@@ -18,38 +18,26 @@ import {
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { StarIcon } from "@chakra-ui/icons";
+import useFetchCharacter from "../hooks/useFetchCharacter";
 
 interface Props {
   isOpen: boolean;
   onOpen: () => void;
   onClose: () => void;
-  id: number | null;
+  id?: number;
   favorites: number[];
   handleFavoriteClick: (e: React.MouseEvent<SVGElement>, id: number) => void;
 }
 
-function CharacterModal({
+const CharacterModal = ({
   isOpen,
   onOpen,
   onClose,
   id,
   favorites,
   handleFavoriteClick,
-}: Props) {
-  const [character, setCharacter] = useState<any>({});
-  useEffect(() => {
-    async function fetchCharacter() {
-      const response = await axios(
-        `https://rickandmortyapi.com/api/character/${id} `
-      );
-      console.log(
-        "🚀 ~ file: CharacterModal.tsx ~ line 30 ~ fetchCharacter ~ response",
-        response.data
-      );
-      setCharacter(response.data);
-    }
-    fetchCharacter();
-  }, []);
+}: Props) => {
+  const {character} = useFetchCharacter(id)
   return (
     <>
       <Modal onClose={onClose} isOpen={isOpen} isCentered size="xl">
@@ -75,29 +63,23 @@ function CharacterModal({
                 borderRadius="8px"
               />
               <Box pl={4}>
-                <HStack >
-                <Text
-                  pt={0}
-                  pl={0}
-                  fontSize="2xl"
-                  fontWeight="extrabold"
-                >
-                  {character.name}
-                </Text>
-                {favorites.includes(character.id) ? (
-                  <StarIcon
-                    color="customBlue.50"
-                    onClick={(e) => handleFavoriteClick(e, character.id)}
-                  />
-                ) : (
-                  <StarIcon
-                    color="transparent"
-                    stroke="customGreen.50"
-                    onClick={(e) => handleFavoriteClick(e, character.id)}
-                  />
-                )}
+                <HStack>
+                  <Text pt={0} pl={0} fontSize="2xl" fontWeight="extrabold">
+                    {character.name}
+                  </Text>
+                  {favorites.includes(character.id) ? (
+                    <StarIcon
+                      color="customBlue.50"
+                      onClick={(e) => handleFavoriteClick(e, character.id)}
+                    />
+                  ) : (
+                    <StarIcon
+                      color="transparent"
+                      stroke="customGreen.50"
+                      onClick={(e) => handleFavoriteClick(e, character.id)}
+                    />
+                  )}
                 </HStack>
-                
 
                 <HStack>
                   {character.status === "Alive" ? (
@@ -186,6 +168,6 @@ function CharacterModal({
       </Modal>
     </>
   );
-}
+};
 
 export default CharacterModal;
