@@ -53,6 +53,8 @@ function CharacterModal({ isOpen, onOpen, onClose, id }: Props) {
           border="2px"
           borderColor="customGreen.50"
           mx={{base:8, md:0}}
+          borderRadius="8px"
+
         >
           <ModalCloseButton _hover={{ borderColor: "customGreen.50" }} />
           <ModalBody pt={12} px={12}>
@@ -61,7 +63,7 @@ function CharacterModal({ isOpen, onOpen, onClose, id }: Props) {
                 src={character.image}
                 alt={character.name + "Image"}
                 maxW={44}
-                borderRadius={4}
+                borderRadius="8px"
               />
               <Box pl={4}>
                 <ModalHeader pt={0} pl={0}>
