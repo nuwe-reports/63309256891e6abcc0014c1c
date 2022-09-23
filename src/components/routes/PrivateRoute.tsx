@@ -13,10 +13,7 @@ interface loginState {
 
 function PrivateRoute({ children }: Props) {
   const userLogged = localStorage.getItem("username");
-  if (!userLogged) {
-    return <Navigate to="/" replace />;
-  }
-
+  if (!userLogged) return <Navigate to="/" replace />;
   return children;
 }
 
