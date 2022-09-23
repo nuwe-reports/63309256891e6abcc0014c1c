@@ -10,7 +10,7 @@ A simple website that consumes Rick&Morty API to display all the characters and 
 ## Installation
 ### Node
 
-[Node](http://nodejs.org/) is really easy to install & now include [NPM](https://npmjs.org/).
+[Node](http://nodejs.org/) is really easy to install & now include [npm](https://npmjs.org/).
 You should be able to run the following command after the installation procedure
 below.
 
