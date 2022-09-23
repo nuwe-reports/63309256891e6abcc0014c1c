@@ -14,7 +14,6 @@ import {
   Circle,
   VStack,
 } from "@chakra-ui/react";
-import { StarIcon } from "@chakra-ui/icons";
 import useFetchCharacter from "../hooks/useFetchCharacter";
 import FavoriteButton from "../components/FavoriteButton";
 
@@ -29,7 +28,6 @@ interface Props {
 
 const CharacterModal = ({
   isOpen,
-  onOpen,
   onClose,
   id,
   favorites,
