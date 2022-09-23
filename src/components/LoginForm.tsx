@@ -3,25 +3,13 @@ import {
   Input,
   Button,
   FormControl,
-  useColorMode,
-  useColorModeValue,
   VStack,
   FormErrorMessage,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { Formik, Field } from "formik";
-import { useContext } from "react";
-
-interface loginState {
-  isLoggedIn: boolean;
-  logInUser: (username: string) => void;
-  logOutUser: (username: string) => void;
-}
 
 const LoginForm = () => {
-  const { toggleColorMode } = useColorMode();
-
-  const formBackground = useColorModeValue("gray.100", "gray.700");
   const navigate = useNavigate();
 
   const loginHandler = (username: string) => {
@@ -61,9 +49,16 @@ const LoginForm = () => {
                 color="customGreen.100"
                 bg="customGreen.50"
                 borderColor="customBlue.50"
-                _focus={{borderColor:"customGreen.50", color:"customGreen.50", bg:"transparent"}}
-                _hover={{borderColor:"customGreen.50", color:"customGreen.50", bg:"transparent"}}
-
+                _focus={{
+                  borderColor: "customGreen.50",
+                  color: "customGreen.50",
+                  bg: "transparent",
+                }}
+                _hover={{
+                  borderColor: "customGreen.50",
+                  color: "customGreen.50",
+                  bg: "transparent",
+                }}
                 validate={(value: string) => {
                   if (!value) {
                     return "Username is required";
@@ -80,7 +75,7 @@ const LoginForm = () => {
               color="customGreen.200"
               mb={8}
               width={60}
-              _hover={{bg:"customGreen.50", borderColor:"customGreen.50"} }
+              _hover={{ bg: "customGreen.50", borderColor: "customGreen.50" }}
             >
               Log In
             </Button>
