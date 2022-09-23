@@ -11,7 +11,7 @@ import useFetchAllCharacters from "../hooks/useFetchAllCharacters";
 const CharactersPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [favorites, setFavorites] = useState<number[]>([]);
-  const [id, setId] = useState<number | null>(null);
+  const [id, setId] = useState<number>(0);
   const { page } = useParams();
   const { characters, totalPages } = useFetchAllCharacters(page);
 
