@@ -1,8 +1,28 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+interface  Character {
+  created:string;
+  episode: string[];
+  gender: string;
+  id:number;
+  image: string;
+  location: {
+    name:string;
+    url:string;
+  };
+  name:string;
+  origin: {
+    name:string;
+    url:string;
+  };
+  species:string;
+  status:string;
+  type:string;
+  url:string;
+}
 const useFetchCharacter = (id?: number) => {
-  const [character, setCharacter] = useState<any>({});
+  const [character, setCharacter] = useState<Character| {}>({});
 
   useEffect(() => {
     async function fetchCharacter() {

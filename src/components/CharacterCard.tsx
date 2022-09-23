@@ -1,8 +1,27 @@
 import { Text, Image, VStack, WrapItem, HStack } from "@chakra-ui/react";
-import { StarIcon } from "@chakra-ui/icons";
 import FavoriteButton from "../components/FavoriteButton"
+interface  Character {
+  created:string;
+  episode: string[];
+  gender: string;
+  id:number;
+  image: string;
+  location: {
+    name:string;
+    url:string;
+  };
+  name:string;
+  origin: {
+    name:string;
+    url:string;
+  };
+  species:string;
+  status:string;
+  type:string;
+  url:string;
+}
 interface Props {
-  character: any;
+  character: Character;
   favorites: number[];
   handleCardCLick: (id: number) => void;
   handleFavoriteClick: (e: React.MouseEvent<SVGElement>, id: number) => void;
