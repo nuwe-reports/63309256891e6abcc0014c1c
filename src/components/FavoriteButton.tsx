@@ -9,20 +9,39 @@ interface Props {
 
 const FavoriteButton = ({ favorites, id, handleFavoriteClick }: Props) => {
   return (
-    <Tooltip hasArrow label="Add to favorites" bg="customBlue.50" color="customGreen.200" border="1px" borderColor="customGreen.50">
+    <>
       {favorites.includes(id) ? (
-        <StarIcon
-          color="customBlue.50"
-          onClick={(e) => handleFavoriteClick(e, id)}
-        />
+        <Tooltip
+          hasArrow
+          label="Remove from favorites"
+          bg="customBlue.50"
+          color="customGreen.200"
+          border="1px"
+          borderColor="customGreen.50"
+          borderRadius="4px"
+        >
+          <StarIcon
+            color="customBlue.50"
+            onClick={(e) => handleFavoriteClick(e, id)}
+          />
+        </Tooltip>
       ) : (
-        <StarIcon
-          color="transparent"
-          stroke="customGreen.50"
-          onClick={(e) => handleFavoriteClick(e, id)}
-        />
+        <Tooltip
+          hasArrow
+          label="Add to favorites"
+          bg="customBlue.50"
+          color="customGreen.200"
+          border="1px"
+          borderColor="customGreen.50"
+        >
+          <StarIcon
+            color="transparent"
+            stroke="customGreen.50"
+            onClick={(e) => handleFavoriteClick(e, id)}
+          />
+        </Tooltip>
       )}
-    </Tooltip>
+    </>
   );
 };
 
