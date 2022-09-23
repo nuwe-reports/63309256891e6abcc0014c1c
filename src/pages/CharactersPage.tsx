@@ -1,25 +1,20 @@
-import {
-  Box,
-  Heading,
-  Wrap,
-  useDisclosure,
-} from "@chakra-ui/react";
-import PageButtons from "../components/PageButtons";
-
-import { useEffect, useState } from "react";
-import axios from "axios";
-import Fonts from "../Fonts";
+import { Box, Heading, Wrap, useDisclosure } from "@chakra-ui/react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
+import Fonts from "../Fonts";
 import CharacterModal from "../components/CharacterModal";
 import CharacterCard from "../components/CharacterCard";
+import PageButtons from "../components/PageButtons";
 import useFetchCharacters from "../hooks/useFetchCharacters";
-const CharactersPage = () => {
 
+
+const CharactersPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [favorites, setFavorites] = useState<number[]>([]);
   const [id, setId] = useState<number | null>(null);
   const { page } = useParams();
-  const {characters, totalPages} = useFetchCharacters(page)
+  const { characters, totalPages } = useFetchCharacters(page);
+
   const handleCardCLick = (id: number) => {
     setId(id);
     onOpen();
@@ -35,7 +30,6 @@ const CharactersPage = () => {
     }
   };
 
-
   return (
     <Box
       bg="customGreen.200"
@@ -48,7 +42,7 @@ const CharactersPage = () => {
         color="customBlue.50"
         fontSize={{ base: 60, md: 120 }}
         textShadow="2.5px 0 #c1e26a, -2.5px 0 #c1e26a, 0 2.5px #c1e26a, 0 -2.5px #c1e26a"
-        pt={10}
+        py={10}
       >
         CHARACTERS
       </Heading>
@@ -66,7 +60,6 @@ const CharactersPage = () => {
           );
         })}
       </Wrap>
-      S
       {isOpen && (
         <CharacterModal
           isOpen={isOpen}
