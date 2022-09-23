@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
 const useGsap = () => {
@@ -6,6 +6,7 @@ const useGsap = () => {
   const mortyPortalRef = useRef(null);
   const rickRef = useRef(null);
   const mortyRef = useRef(null);
+  
   useEffect(() => {
     const rickTimeLine = gsap.timeline();
     const mortyTimeLine = gsap.timeline();
@@ -47,7 +48,7 @@ const useGsap = () => {
       });
   }, []);
 
-  return [rickPortalRef, mortyPortalRef, rickRef, mortyRef ];
+  return [rickPortalRef, mortyPortalRef, rickRef, mortyRef];
 };
 
 export default useGsap;
