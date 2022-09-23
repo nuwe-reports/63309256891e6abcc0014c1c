@@ -48,7 +48,7 @@ const useGsap = () => {
       });
   }, []);
 
-  return [rickPortalRef, mortyPortalRef, rickRef, mortyRef];
+  return {rickPortalRef, mortyPortalRef, rickRef, mortyRef};
 };
 
 export default useGsap;
