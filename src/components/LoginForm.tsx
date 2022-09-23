@@ -58,7 +58,12 @@ const LoginForm = () => {
                 variant="filled"
                 mb={3}
                 width={60}
-                color="customGreen.50"
+                color="customGreen.100"
+                bg="customGreen.50"
+                borderColor="customBlue.50"
+                _focus={{borderColor:"customGreen.50", color:"customGreen.50", bg:"transparent"}}
+                _hover={{borderColor:"customGreen.50", color:"customGreen.50", bg:"transparent"}}
+
                 validate={(value: string) => {
                   if (!value) {
                     return "Username is required";
@@ -75,31 +80,13 @@ const LoginForm = () => {
               color="customGreen.200"
               mb={8}
               width={60}
+              _hover={{bg:"customGreen.50", borderColor:"customGreen.50"} }
             >
               Log In
             </Button>
           </VStack>
         </form>
       )}
-
-      {/* <Input
-          placeholder="**********"
-          type="password"
-          variant="filled"
-          mb={6}
-        /> */}
-
-      {/* <FormControl display="flex" alignItems="center">
-          <FormLabel htmlFor="dark_mode" color="#c1e26a" mb="0">
-            Enable Dark Mode?
-          </FormLabel>
-          <Switch
-            id="dark_mode"
-            colorScheme="teal"
-            size="lg"
-            onChange={toggleColorMode}
-          />
-        </FormControl> */}
     </Formik>
   );
 };
