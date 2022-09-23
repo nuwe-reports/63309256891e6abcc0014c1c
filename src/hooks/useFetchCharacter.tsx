@@ -48,10 +48,6 @@ const useFetchCharacter = (id?: number) => {
       const response = await axios(
         `https://rickandmortyapi.com/api/character/${id} `
       );
-      console.log(
-        "🚀 ~ file: CharacterModal.tsx ~ line 30 ~ fetchCharacter ~ response",
-        response.data
-      );
       setCharacter(response.data);
     }
     fetchCharacter();

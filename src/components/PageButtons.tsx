@@ -32,8 +32,6 @@ const PageButtons = ({ totalPages }: Props) => {
   const handlePageChange = (nextPage: number): void => {
     setCurrentPage(nextPage);
     navigate(`/characters/${nextPage}`);
-
-    console.log("request new data with ->", nextPage);
   };
 
   return (
