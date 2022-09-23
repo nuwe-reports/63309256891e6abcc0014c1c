@@ -42,7 +42,7 @@ const PageButtons = ({ totalPages }: Props) => {
       currentPage={currentPage}
       onPageChange={handlePageChange}
     >
-      <PaginationContainer align="center" justify="center" p={4} w="full">
+      <PaginationContainer align="center" justify="center" py={8} w="full">
         <PaginationPrevious
           p={0}
           mr={2}
@@ -73,6 +73,8 @@ const PageButtons = ({ totalPages }: Props) => {
               bg="customGreen.100"
               color="customGreen.50"
               border="1px"
+              mx={1}
+              w={8}
               borderColor="customGreen.50"
               _hover={{
                 bg: "customBlue.50",
