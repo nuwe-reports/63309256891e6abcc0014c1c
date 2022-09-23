@@ -5,7 +5,7 @@ import Fonts from "../Fonts";
 import CharacterModal from "../components/CharacterModal";
 import CharacterCard from "../components/CharacterCard";
 import PageButtons from "../components/PageButtons";
-import useFetchCharacters from "../hooks/useFetchCharacters";
+import useFetchAllCharacters from "../hooks/useFetchAllCharacters";
 
 
 const CharactersPage = () => {
@@ -13,7 +13,7 @@ const CharactersPage = () => {
   const [favorites, setFavorites] = useState<number[]>([]);
   const [id, setId] = useState<number | null>(null);
   const { page } = useParams();
-  const { characters, totalPages } = useFetchCharacters(page);
+  const { characters, totalPages } = useFetchAllCharacters(page);
 
   const handleCardCLick = (id: number) => {
     setId(id);

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const useFetchCharacters = (page?: string) => {
+const useFetchAllCharacters = (page?: string) => {
   const [characters, setCharacters] = useState<any[]>([]);
   const [totalPages, setTotalPages] = useState<number>(0);
   useEffect(() => {
@@ -18,4 +18,4 @@ const useFetchCharacters = (page?: string) => {
   return {characters, totalPages};
 };
 
-export default useFetchCharacters;
+export default useFetchAllCharacters;
