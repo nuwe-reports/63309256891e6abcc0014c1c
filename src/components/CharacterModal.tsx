@@ -86,8 +86,7 @@ function CharacterModal({
                 </Text>
                 {favorites.includes(character.id) ? (
                   <StarIcon
-                    color="customGreen.50"
-                    stroke="customGreen.50"
+                    color="customBlue.50"
                     onClick={(e) => handleFavoriteClick(e, character.id)}
                   />
                 ) : (
