@@ -1,46 +1,46 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-interface  Character {
-  created:string;
+interface Character {
+  created: string;
   episode: string[];
   gender: string;
-  id:number;
+  id: number;
   image: string;
   location: {
-    name:string;
-    url:string;
+    name: string;
+    url: string;
   };
-  name:string;
+  name: string;
   origin: {
-    name:string;
-    url:string;
+    name: string;
+    url: string;
   };
-  species:string;
-  status:string;
-  type:string;
-  url:string;
+  species: string;
+  status: string;
+  type: string;
+  url: string;
 }
 const useFetchCharacter = (id?: number) => {
   const [character, setCharacter] = useState<Character>({
-    created:"",
+    created: "",
     episode: [""],
     gender: "",
-    id:0,
+    id: 0,
     image: "",
     location: {
-      name:"",
-      url:"",
+      name: "",
+      url: "",
     },
-    name:"",
+    name: "",
     origin: {
-      name:"",
-      url:"",
+      name: "",
+      url: "",
     },
-    species:"",
-    status:"",
-    type:"",
-    url:"",
+    species: "",
+    status: "",
+    type: "",
+    url: "",
   });
 
   useEffect(() => {
