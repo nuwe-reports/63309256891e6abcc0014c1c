@@ -1,7 +1,7 @@
 # TALENT SQUAD FRONTEND
 
-A simple website that consumes Rick&Morty API to display all the characters and character details.
-
+A simple website that consumes Rick&Morty API to display all the characters and character detailsL:
+https://talent-squad-frontend-aleix.vercel.app/
 ## Code quality
 
 [![CodeFactor](https://www.codefactor.io/repository/github/aleixmarsa/talent-squad-frontend/badge)](https://www.codefactor.io/repository/github/aleixmarsa/talent-squad-frontend)
