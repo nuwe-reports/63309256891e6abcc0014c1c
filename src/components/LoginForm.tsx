@@ -35,7 +35,7 @@ const LoginForm = () => {
             bg="customGreen.100"
           >
             <Heading mb={6} color="customGreen.50">
-              Log In
+              Login
             </Heading>
             <FormControl isInvalid={!!errors.username && touched.username}>
               <Field
