@@ -7,6 +7,26 @@ import CharacterCard from "../components/CharacterCard";
 import PageButtons from "../components/PageButtons";
 import useFetchAllCharacters from "../hooks/useFetchAllCharacters";
 
+interface Character {
+  created: string;
+  episode: string[];
+  gender: string;
+  id: number;
+  image: string;
+  location: {
+    name: string;
+    url: string;
+  };
+  name: string;
+  origin: {
+    name: string;
+    url: string;
+  };
+  species: string;
+  status: string;
+  type: string;
+  url: string;
+}
 const CharactersPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [favorites, setFavorites] = useState<number[]>([]);
@@ -14,8 +34,29 @@ const CharactersPage = () => {
   const { page } = useParams();
   const { characters, totalPages } = useFetchAllCharacters(page);
 
-  const handleCardCLick = (id: number) => {
-    setId(id);
+  const [character, setCharacter] = useState<Character>({
+    created: "",
+    episode: [""],
+    gender: "",
+    id: 0,
+    image: "",
+    location: {
+      name: "",
+      url: "",
+    },
+    name: "",
+    origin: {
+      name: "",
+      url: "",
+    },
+    species: "",
+    status: "",
+    type: "",
+    url: "",
+  });
+
+  const handleCardCLick = (character: Character) => {
+    setCharacter(character);
     onOpen();
   };
 
@@ -37,8 +78,15 @@ const CharactersPage = () => {
       px={{ base: 8, xl: 160 }}
     >
       <Fonts />
-      <Image src="/characters.png" alt="Characters" w={{base:"sm", md:"md"}} m="auto" pt={10} filter= 'drop-shadow(2px 0 0 #c1e26a) drop-shadow(0 2px 0 #c1e26a) drop-shadow(-2px 0 0 #c1e26a) drop-shadow(0 2px 0 #c1e26a)  '/>
-      <PageButtons totalPages={totalPages}/>
+      <Image
+        src="/characters.png"
+        alt="Characters"
+        w={{ base: "sm", md: "md" }}
+        m="auto"
+        pt={10}
+        filter="drop-shadow(2px 0 0 #c1e26a) drop-shadow(0 2px 0 #c1e26a) drop-shadow(-2px 0 0 #c1e26a) drop-shadow(0 2px 0 #c1e26a)  "
+      />
+      <PageButtons totalPages={totalPages} />
       <Wrap spacing={{ base: 8, lg: 20 }} pt={18} justify="center">
         {characters.map((character, index) => {
           return (
@@ -57,12 +105,12 @@ const CharactersPage = () => {
           isOpen={isOpen}
           onOpen={onOpen}
           onClose={onClose}
-          id={id}
+          character={character}
           favorites={favorites}
           handleFavoriteClick={handleFavoriteClick}
         />
       )}
-      <PageButtons totalPages={totalPages}/>
+      <PageButtons totalPages={totalPages} />
     </Box>
   );
 };

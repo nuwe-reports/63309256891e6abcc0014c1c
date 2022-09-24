@@ -14,26 +14,46 @@ import {
   Circle,
   VStack,
 } from "@chakra-ui/react";
-import useFetchCharacter from "../hooks/useFetchCharacter";
 import FavoriteButton from "../components/FavoriteButton";
+
+interface Character {
+  created: string;
+  episode: string[];
+  gender: string;
+  id: number;
+  image: string;
+  location: {
+    name: string;
+    url: string;
+  };
+  name: string;
+  origin: {
+    name: string;
+    url: string;
+  };
+  species: string;
+  status: string;
+  type: string;
+  url: string;
+}
 
 interface Props {
   isOpen: boolean;
   onOpen: () => void;
   onClose: () => void;
-  id?: number;
+  character: Character;
   favorites: number[];
   handleFavoriteClick: (e: React.MouseEvent<SVGElement>, id: number) => void;
 }
 
+
 const CharacterModal = ({
   isOpen,
   onClose,
-  id,
+  character,
   favorites,
   handleFavoriteClick,
 }: Props) => {
-  const { character } = useFetchCharacter(id);
   return (
     <>
       <Modal onClose={onClose} isOpen={isOpen} isCentered size="xl">

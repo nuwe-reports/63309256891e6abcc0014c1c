@@ -23,7 +23,7 @@ interface Character {
 interface Props {
   character: Character;
   favorites: number[];
-  handleCardCLick: (id: number) => void;
+  handleCardCLick: (character: Character) => void;
   handleFavoriteClick: (e: React.MouseEvent<SVGElement>, id: number) => void;
 }
 const CharacterCard = ({
@@ -38,7 +38,7 @@ const CharacterCard = ({
       borderColor="customGreen.50"
       bg="customGreen.100"
       p={4}
-      onClick={() => handleCardCLick(character.id)}
+      onClick={() => handleCardCLick(character)}
       cursor={"pointer"}
       borderRadius="8px"
       _hover={{ opacity: 0.8 }}
