@@ -6,35 +6,32 @@ import CharacterModal from "../components/CharacterModal";
 import CharacterCard from "../components/CharacterCard";
 import PageButtons from "../components/PageButtons";
 import useFetchAllCharacters from "../hooks/useFetchAllCharacters";
-import {Character} from "../types"
+import { Character } from "../types";
 
-const INITIAL_STATE = 
-  {
-    created: "",
-    episode: [""],
-    gender: "",
-    id: 0,
-    image: "",
-    location: {
-      name: "",
-      url: "",
-    },
+const INITIAL_STATE = {
+  created: "",
+  episode: [""],
+  gender: "",
+  id: 0,
+  image: "",
+  location: {
     name: "",
-    origin: {
-      name: "",
-      url: "",
-    },
-    species: "",
-    status: "",
-    type: "",
     url: "",
-  }
-
+  },
+  name: "",
+  origin: {
+    name: "",
+    url: "",
+  },
+  species: "",
+  status: "",
+  type: "",
+  url: "",
+};
 
 const CharactersPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [favorites, setFavorites] = useState<number[]>([]);
-  const [id, setId] = useState<number>(0);
   const { page } = useParams();
   const { characters, totalPages } = useFetchAllCharacters(page);
 
