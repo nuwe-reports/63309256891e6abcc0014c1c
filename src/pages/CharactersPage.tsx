@@ -1,7 +1,6 @@
 import { Box, Image, Wrap, useDisclosure, VStack } from "@chakra-ui/react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import Fonts from "../Fonts";
 import CharacterModal from "../components/CharacterModal";
 import CharacterCard from "../components/CharacterCard";
 import PageButtons from "../components/PageButtons";
