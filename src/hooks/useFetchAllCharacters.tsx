@@ -1,48 +1,32 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Character } from "../types";
 
-interface  Character {
-  created:string;
-  episode: string[];
-  gender: string;
-  id:number;
-  image: string;
-  location: {
-    name:string;
-    url:string;
-  };
-  name:string;
-  origin: {
-    name:string;
-    url:string;
-  };
-  species:string;
-  status:string;
-  type:string;
-  url:string;
-}
-
-const useFetchAllCharacters = (page?: string) => {
-  const [characters, setCharacters] = useState<Character[]>([{
-    created:"",
+const INITIAL_STATE = [
+  {
+    created: "",
     episode: [""],
     gender: "",
-    id:0,
+    id: 0,
     image: "",
     location: {
-      name:"",
-      url:"",
+      name: "",
+      url: "",
     },
-    name:"",
+    name: "",
     origin: {
-      name:"",
-      url:"",
+      name: "",
+      url: "",
     },
-    species:"",
-    status:"",
-    type:"",
-    url:"",
-  }]);
+    species: "",
+    status: "",
+    type: "",
+    url: "",
+  },
+];
+
+const useFetchAllCharacters = (page?: string) => {
+  const [characters, setCharacters] = useState<Character[]>(INITIAL_STATE);
   const [totalPages, setTotalPages] = useState<number>(0);
   useEffect(() => {
     async function fetchCharacters() {
@@ -55,7 +39,7 @@ const useFetchAllCharacters = (page?: string) => {
     fetchCharacters();
   }, [page]);
 
-  return {characters, totalPages};
+  return { characters, totalPages };
 };
 
 export default useFetchAllCharacters;

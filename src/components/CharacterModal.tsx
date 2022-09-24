@@ -16,26 +16,8 @@ import {
 } from "@chakra-ui/react";
 import FavoriteButton from "../components/FavoriteButton";
 
-interface Character {
-  created: string;
-  episode: string[];
-  gender: string;
-  id: number;
-  image: string;
-  location: {
-    name: string;
-    url: string;
-  };
-  name: string;
-  origin: {
-    name: string;
-    url: string;
-  };
-  species: string;
-  status: string;
-  type: string;
-  url: string;
-}
+import {Character} from "../types"
+
 
 interface Props {
   isOpen: boolean;

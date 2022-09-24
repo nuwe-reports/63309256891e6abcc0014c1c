@@ -6,35 +6,10 @@ import CharacterModal from "../components/CharacterModal";
 import CharacterCard from "../components/CharacterCard";
 import PageButtons from "../components/PageButtons";
 import useFetchAllCharacters from "../hooks/useFetchAllCharacters";
+import {Character} from "../types"
 
-interface Character {
-  created: string;
-  episode: string[];
-  gender: string;
-  id: number;
-  image: string;
-  location: {
-    name: string;
-    url: string;
-  };
-  name: string;
-  origin: {
-    name: string;
-    url: string;
-  };
-  species: string;
-  status: string;
-  type: string;
-  url: string;
-}
-const CharactersPage = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [favorites, setFavorites] = useState<number[]>([]);
-  const [id, setId] = useState<number>(0);
-  const { page } = useParams();
-  const { characters, totalPages } = useFetchAllCharacters(page);
-
-  const [character, setCharacter] = useState<Character>({
+const INITIAL_STATE = 
+  {
     created: "",
     episode: [""],
     gender: "",
@@ -53,7 +28,17 @@ const CharactersPage = () => {
     status: "",
     type: "",
     url: "",
-  });
+  }
+
+
+const CharactersPage = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [favorites, setFavorites] = useState<number[]>([]);
+  const [id, setId] = useState<number>(0);
+  const { page } = useParams();
+  const { characters, totalPages } = useFetchAllCharacters(page);
+
+  const [character, setCharacter] = useState<Character>(INITIAL_STATE);
 
   const handleCardCLick = (character: Character) => {
     setCharacter(character);
