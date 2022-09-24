@@ -65,11 +65,13 @@ const CharacterModal = ({
                   <Text pt={0} pl={0} fontSize="2xl" fontWeight="extrabold">
                     {character.name}
                   </Text>
+                  <Box>
                   <FavoriteButton
                     favorites={favorites}
                     id={character.id}
                     handleFavoriteClick={handleFavoriteClick}
                   />
+                  </Box>
                 </HStack>
 
                 <HStack>
