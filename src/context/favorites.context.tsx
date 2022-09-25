@@ -30,7 +30,7 @@ const FavoritesWrapper = ({ children }: Props) => {
     );
     const favoritesList = localStorage.getItem("favorites");
     if (isFavorite)
-      setFavorites(favorites.filter((char: any) => char.id !== character.id));
+      setFavorites(favorites.filter((char: Character) => char.id !== character.id));
     else if (favoritesList)
       setFavorites([...JSON.parse(favoritesList), character]);
   };
