@@ -25,14 +25,14 @@ const Header = () => {
       borderBottom="1px"
       borderColor="customGreen.50"
     >
-      <HStack  justify={{base:"center", md:"end"}} px={{base:1,md:16}} gap={8}>
-        <HStack pt={0} fontSize={{base:"md", md:"xl"}} gap={{base:2,md:4}}>
+      <HStack  justify={{base:"center", md:"end"}} px={{base:1,md:16}} gap={{base:4,md:8}}>
+        <HStack fontSize={{base:"sm", md:"xl"}} gap={{base:2,md:4}}>
           <Link as={NavLink} to="/characters" color="customGreen.50" _activeLink={{color:"customBlue.50"}} _hover={{color:"customBlue.50"}}>CHARACTERS</Link>
           <Link as={NavLink} to="/favorites" color="customGreen.50" _activeLink={{color:"customBlue.50"}} _hover={{color:"customBlue.50"}}>FAVORITES </Link>
         </HStack>
 
         <HStack>
-          <Text color="customGreen.50" fontSize={{base:"md", md:"xl"}}>
+          <Text color="customGreen.50" fontSize={{base:"sm", md:"xl"}}>
             Logged in as{" "}
             <Text as="span" color="customBlue.50" fontWeight="bold" textDecoration="underline">
               {username}
