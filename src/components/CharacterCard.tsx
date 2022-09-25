@@ -4,15 +4,11 @@ import {Character} from "../types"
 
 interface Props {
   character: Character;
-  favorites: number[];
   handleCardCLick: (character: Character) => void;
-  handleFavoriteClick: (e: React.MouseEvent<SVGElement>, id: number) => void;
 }
 const CharacterCard = ({
   character,
-  favorites,
   handleCardCLick,
-  handleFavoriteClick,
 }: Props) => {
   return (
     <WrapItem
@@ -35,9 +31,7 @@ const CharacterCard = ({
         <HStack>
           <Text color="customGreen.50">{character.name.toUpperCase()}</Text>
           <FavoriteButton
-            favorites={favorites}
-            id={character.id}
-            handleFavoriteClick={handleFavoriteClick}
+            character={character}
           />
         </HStack>
       </VStack>

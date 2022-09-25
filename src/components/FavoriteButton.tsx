@@ -1,16 +1,17 @@
 import { StarIcon } from "@chakra-ui/icons";
 import { Tooltip } from "@chakra-ui/react";
+import useFavorites from "../hooks/useFavorites";
+import { Character } from "../types";
 
 interface Props {
-  favorites: number[];
-  id: number;
-  handleFavoriteClick: (e: React.MouseEvent<SVGElement>, id: number) => void;
+  character: Character;
 }
 
-const FavoriteButton = ({ favorites, id, handleFavoriteClick }: Props) => {
+const FavoriteButton = ({ character }: Props) => {
+  const [favorites, toggleFavorite] = useFavorites();
   return (
     <>
-      {favorites.includes(id) ? (
+      {favorites.find((char:Character) => char.id === character.id) ? (
         <Tooltip
           hasArrow
           label="Remove from favorites"
@@ -22,7 +23,7 @@ const FavoriteButton = ({ favorites, id, handleFavoriteClick }: Props) => {
         >
           <StarIcon
             color="customBlue.50"
-            onClick={(e) => handleFavoriteClick(e, id)}
+            onClick={(e) => toggleFavorite(e, character)}
           />
         </Tooltip>
       ) : (
@@ -37,7 +38,7 @@ const FavoriteButton = ({ favorites, id, handleFavoriteClick }: Props) => {
           <StarIcon
             color="transparent"
             stroke="customGreen.50"
-            onClick={(e) => handleFavoriteClick(e, id)}
+            onClick={(e) => toggleFavorite(e, character)}
           />
         </Tooltip>
       )}

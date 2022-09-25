@@ -21,11 +21,8 @@ import {Character} from "../types"
 
 interface Props {
   isOpen: boolean;
-  onOpen: () => void;
   onClose: () => void;
   character: Character;
-  favorites: number[];
-  handleFavoriteClick: (e: React.MouseEvent<SVGElement>, id: number) => void;
 }
 
 
@@ -33,8 +30,6 @@ const CharacterModal = ({
   isOpen,
   onClose,
   character,
-  favorites,
-  handleFavoriteClick,
 }: Props) => {
   return (
     <>
@@ -67,9 +62,7 @@ const CharacterModal = ({
                   </Text>
                   <Box>
                   <FavoriteButton
-                    favorites={favorites}
-                    id={character.id}
-                    handleFavoriteClick={handleFavoriteClick}
+                    character={character}
                   />
                   </Box>
                 </HStack>

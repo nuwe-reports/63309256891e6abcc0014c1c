@@ -30,7 +30,6 @@ const INITIAL_STATE = {
 
 const CharactersPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [favorites, setFavorites] = useState<number[]>([]);
   const { page } = useParams();
   const { characters, totalPages } = useFetchAllCharacters(page);
 
@@ -39,16 +38,6 @@ const CharactersPage = () => {
   const handleCardCLick = (character: Character) => {
     setCharacter(character);
     onOpen();
-  };
-
-  const handleFavoriteClick = (e: React.MouseEvent<SVGElement>, id: number) => {
-    e.stopPropagation();
-    const index = favorites.indexOf(id);
-    if (id && index === -1) {
-      setFavorites([...favorites, id]);
-    } else if (id && index !== -1) {
-      setFavorites(favorites.filter((item) => item !== id));
-    }
   };
 
   return (
@@ -70,9 +59,7 @@ const CharactersPage = () => {
               <CharacterCard
                 key={index}
                 character={character}
-                favorites={favorites}
                 handleCardCLick={handleCardCLick}
-                handleFavoriteClick={handleFavoriteClick}
               />
             );
           })}
@@ -80,11 +67,8 @@ const CharactersPage = () => {
         {isOpen && (
           <CharacterModal
             isOpen={isOpen}
-            onOpen={onOpen}
             onClose={onClose}
             character={character}
-            favorites={favorites}
-            handleFavoriteClick={handleFavoriteClick}
           />
         )}
         <PageButtons totalPages={totalPages} />
