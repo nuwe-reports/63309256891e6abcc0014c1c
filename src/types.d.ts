@@ -18,3 +18,14 @@ export interface Character {
     type: string;
     url: string;
   }
+
+  export interface FavoriteContext {
+    favorites: Character[];
+    toggleFavorite: (
+      e: React.MouseEvent<SVGElement>,
+      character: Character
+    ) => void;
+    setFavorites: Dispatch<SetStateAction<Character[]>>
+  
+  }
+  

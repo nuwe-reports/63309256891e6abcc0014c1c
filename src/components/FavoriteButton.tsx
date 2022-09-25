@@ -1,14 +1,14 @@
 import { StarIcon } from "@chakra-ui/icons";
 import { Tooltip } from "@chakra-ui/react";
-import useFavorites from "../hooks/useFavorites";
-import { Character } from "../types";
-
+import { Character, FavoriteContext } from "../types";
+import {FavoritesContext} from "../context/favorites.context"
+import { useContext } from "react";
 interface Props {
   character: Character;
 }
 
 const FavoriteButton = ({ character }: Props) => {
-  const [favorites, toggleFavorite] = useFavorites();
+  const {favorites, toggleFavorite} = useContext(FavoritesContext) as FavoriteContext
   return (
     <>
       {favorites.find((char:Character) => char.id === character.id) ? (
