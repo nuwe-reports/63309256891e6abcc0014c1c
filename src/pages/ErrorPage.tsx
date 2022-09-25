@@ -18,10 +18,10 @@ const navigate = useNavigate();
           404 - Page not found
         </Text>
         <Text fontSize={{base:"2xl", md:"4xl"}} fontWeight="bold" color="customGreen.50">
-          Look Morty! Someone seems to be lost!
+          Look Morty! A lost traveler!
         </Text>
         <Text fontSize={{base:"md", md:"xl"}} fontWeight="bold" color="customGreen.50">
-          Fast! Enter the portal to go back home!
+          Hurry up! Enter the portal to go back home!
         </Text>
         <Image
         src="/portal-2.gif"
