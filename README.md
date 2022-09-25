@@ -1,7 +1,15 @@
 # TALENT SQUAD FRONTEND
 
-A simple website that consumes Rick&Morty API to display all the characters and character detailsL:
-https://talent-squad-frontend-aleix.vercel.app/
+A simple website that consumes Rick&Morty API to display all the characters and character details:
+
+<a href="https://talent-squad-frontend-aleix.vercel.app/">Rick and Morty Challenge</a>
+
+Build with:
+
+ <a href="#"><img src="https://img.shields.io/badge/Vite-282C34?logo=vite&logoColor=3178C6" alt="Vite" title="Vite" height="25" /></a>
+ <a href="#"><img src="https://img.shields.io/badge/Typescript-282C34?logo=typescript&logoColor=3178C6" alt="Typescript" title="Typescript" height="25" /></a>
+   <a href="#"><img src="https://img.shields.io/badge/ReactJs-282C34?logo=react&logoColor=61DAFB" alt="ReactJs" title="ReactJs" height="25" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/Chakra%20UI-282C34?logo=chakraui&logoColor=white" alt="Chakra" title="Chakra" height="25" /></a>
 ## Code quality
 
 [![CodeFactor](https://www.codefactor.io/repository/github/aleixmarsa/talent-squad-frontend/badge)](https://www.codefactor.io/repository/github/aleixmarsa/talent-squad-frontend)
