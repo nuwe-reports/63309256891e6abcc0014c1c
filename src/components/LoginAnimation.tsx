@@ -20,7 +20,7 @@ const LoginAnimation = () => {
         right={-300}
         css={{ transform: "rotate(180deg)" }}
         ref={rickPortalRef}
-        visibility={{ base: "hidden", md: "visible" }}
+        display={{ base: "none", md: "block" }}
       />
       <Image
         src="/rick.png"
@@ -30,7 +30,7 @@ const LoginAnimation = () => {
         height={300}
         width="auto"
         ref={rickRef}
-        visibility={{ base: "hidden", md: "visible" }}
+        display={{ base: "none", md: "block" }}
       />
       <Image
         src="/portal-2.gif"
@@ -38,7 +38,7 @@ const LoginAnimation = () => {
         bottom={0}
         left={-300}
         ref={mortyPortalRef}
-        visibility={{ base: "hidden", md: "visible" }}
+        display={{ base: "none", md: "block" }}
       />
       <Image
         src="/morty.png"
@@ -48,7 +48,7 @@ const LoginAnimation = () => {
         height={220}
         width="auto"
         ref={mortyRef}
-        visibility={{ base: "hidden", md: "visible" }}
+        display={{ base: "none", md: "block" }}
       />
     </Box>
   );
