@@ -14,7 +14,7 @@ const LoginForm = () => {
 
   const loginHandler = (username: string) => {
     localStorage.setItem("username", username);
-    navigate("/characters/1");
+    navigate("/characters");
   };
 
   return (

@@ -6,7 +6,7 @@ interface Props {
 
 function AnonRoute({ children }: Props) {
   const userLogged = localStorage.getItem("username");
-  if (userLogged) return <Navigate to="/characters/1" replace />;
+  if (userLogged) return <Navigate to="/characters" replace />;
   return children;
 }
 
