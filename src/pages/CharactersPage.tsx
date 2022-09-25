@@ -1,6 +1,5 @@
 import { Box, Image, Wrap, useDisclosure, VStack } from "@chakra-ui/react";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 import CharacterModal from "../components/CharacterModal";
 import CharacterCard from "../components/CharacterCard";
 import PageButtons from "../components/PageButtons";
@@ -30,8 +29,8 @@ const INITIAL_STATE = {
 
 const CharactersPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { page } = useParams();
-  const { characters, totalPages } = useFetchAllCharacters(page);
+  const [ currentPage, setCurrentPage ] = useState<number>(1);
+  const { characters, totalPages } = useFetchAllCharacters(currentPage);
 
   const [character, setCharacter] = useState<Character>(INITIAL_STATE);
 
@@ -39,6 +38,10 @@ const CharactersPage = () => {
     setCharacter(character);
     onOpen();
   };
+
+  const handleNextPage = (page:number) =>{
+    setCurrentPage(page)
+  }
 
   return (
     <VStack gap={0} bg="customGreen.200">
@@ -52,7 +55,7 @@ const CharactersPage = () => {
           pt={10}
           filter="drop-shadow(2px 0 0 #c1e26a) drop-shadow(0 2px 0 #c1e26a) drop-shadow(-2px 0 0 #c1e26a) drop-shadow(0 2px 0 #c1e26a)  "
         />
-        <PageButtons totalPages={totalPages} />
+        <PageButtons totalPages={totalPages} handleNextPage={handleNextPage}/>
         <Wrap spacing={{ base: 8, lg: 20 }} pt={18} justify="center">
           {characters.map((character, index) => {
             return (
@@ -71,7 +74,7 @@ const CharactersPage = () => {
             character={character}
           />
         )}
-        <PageButtons totalPages={totalPages} />
+        <PageButtons totalPages={totalPages} handleNextPage={handleNextPage} />
       </Box>
     </VStack>
   );

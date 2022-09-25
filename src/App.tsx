@@ -19,7 +19,7 @@ function App() {
           }
         />
         <Route
-          path="/characters/:page"
+          path="/characters"
           element={
             <PrivateRoute>
               <CharactersPage />

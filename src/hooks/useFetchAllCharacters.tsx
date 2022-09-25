@@ -25,7 +25,7 @@ const INITIAL_STATE = [
   },
 ];
 
-const useFetchAllCharacters = (page?: string) => {
+const useFetchAllCharacters = (page: number) => {
   const [characters, setCharacters] = useState<Character[]>(INITIAL_STATE);
   const [totalPages, setTotalPages] = useState<number>(0);
   useEffect(() => {

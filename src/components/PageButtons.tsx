@@ -1,5 +1,3 @@
-import { useNavigate } from "react-router-dom";
-
 import {
   Pagination,
   usePagination,
@@ -15,9 +13,10 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 
 interface Props {
   totalPages: number;
+  handleNextPage: (page:number) => void;
 }
 
-const PageButtons = ({ totalPages }: Props) => {
+const PageButtons = ({ totalPages, handleNextPage }: Props) => {
   const { currentPage, setCurrentPage, pagesCount, pages } = usePagination({
     pagesCount: totalPages,
     initialState: { currentPage: 1 },
@@ -27,11 +26,10 @@ const PageButtons = ({ totalPages }: Props) => {
     },
   });
 
-  const navigate = useNavigate();
 
   const handlePageChange = (nextPage: number): void => {
     setCurrentPage(nextPage);
-    navigate(`/characters/${nextPage}`);
+    handleNextPage(nextPage);
   };
 
   return (
