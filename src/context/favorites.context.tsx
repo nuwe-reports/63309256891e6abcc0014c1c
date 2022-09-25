@@ -1,8 +1,20 @@
-import { useEffect, useState } from "react";
-import { Character } from "../types";
+import React, {
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
+import { Character, FavoriteContext } from "../types";
 
-const useFavorites = () => {
-  const [favorites, setFavorites] = useState(() => {
+interface Props {
+  children: ReactNode;
+}
+
+export const FavoritesContext = React.createContext<FavoriteContext | null>(
+  null
+);
+
+const FavoritesWrapper = ({ children }: Props) => {
+  const [favorites, setFavorites] = useState<Character[]>(() => {
     const favoritesList = localStorage.getItem("favorites");
     if (favoritesList) return JSON.parse(favoritesList);
     else return [];
@@ -25,13 +37,15 @@ const useFavorites = () => {
 
   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
-    console.log(
-      "🚀 ~ file: useFavorites.tsx ~ line 24 ~ useEffect ~ favorites",
-      favorites
-    );
   }, [favorites]);
 
-  return [favorites, toggleFavorite];
+  return (
+    <FavoritesContext.Provider
+      value={{ favorites, toggleFavorite, setFavorites }}
+    >
+      {children}
+    </FavoritesContext.Provider>
+  );
 };
 
-export default useFavorites;
+export default FavoritesWrapper;
