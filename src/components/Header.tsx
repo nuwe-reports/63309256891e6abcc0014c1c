@@ -8,6 +8,7 @@ const Header = () => {
 
   const handleClick = () => {
     localStorage.removeItem("username");
+    localStorage.removeItem("favorites");
     navigate("/");
   };
   return (
